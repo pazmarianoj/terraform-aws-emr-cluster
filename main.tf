@@ -90,10 +90,11 @@ resource "aws_security_group" "emr_slave" {
 # EMR resources
 #
 resource "aws_emr_cluster" "cluster" {
-  name           = "${var.name}"
-  release_label  = "${var.release_label}"
-  applications   = "${var.applications}"
-  configurations = "${var.configurations}"
+  name                              = "${var.name}"
+  release_label                     = "${var.release_label}"
+  applications                      = "${var.applications}"
+  configurations                    = "${var.configurations}"
+  keep_job_flow_alive_when_no_steps = "${var.keep_job_flow_alive_when_no_steps}"
 
   ec2_attributes {
     key_name                          = "${var.key_name}"

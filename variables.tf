@@ -29,6 +29,10 @@ variable "service_access_security_group_id" {
   description = "Security group with access to AWS Services over internet gateway. Applied to cluster service, master and slaves"
 }
 
+variable "keep_job_flow_alive_when_no_steps" {
+  default = true
+}
+
 variable "custum_policy_count" {
   default = 0
   description = "Number of custom policy arns in custom_policy_arns"

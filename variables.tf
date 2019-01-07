@@ -74,3 +74,18 @@ variable "bootstrap_args" {
 }
 
 variable "log_uri" {}
+
+variable "step" {
+  type = "map"
+
+  default = {
+    name              = "My Step"
+    action_on_failure = "CONTINUE"
+    jar               = "command-runner.jar"
+  }
+}
+
+variable "step_args" {
+  type    = "list"
+  default = []
+}

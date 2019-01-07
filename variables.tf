@@ -25,6 +25,17 @@ variable "key_name" {}
 
 variable "subnet_id" {}
 
+variable "custum_policy_count" {
+  default = 0
+  description = "Number of custom policy arns in custom_policy_arns"
+}
+
+variable "custom_policy_arns" {
+  type    = "list"
+  default = []
+  description = "List of policy arns to add to instance profile role"
+}
+
 variable "instance_groups" {
   default = [
     {

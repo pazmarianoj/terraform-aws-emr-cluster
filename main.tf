@@ -107,6 +107,28 @@ resource "aws_emr_cluster" "cluster" {
     instance_profile                  = "${aws_iam_instance_profile.emr_ec2_instance_profile.arn}"
   }
 
+  step {
+    action_on_failure = "TERMINATE_CLUSTER"
+
+    "hadoop_jar_step" {
+      jar  = "command-runner.jar"
+      args = ["state-pusher-script"]
+    }
+
+    name = "Setup Hadoop Debugging"
+  }
+
+  step {
+    action_on_failure = "${var.step["action_on_failure"]}"
+
+    "hadoop_jar_step" {
+      jar  = "${var.step["jar"]}"
+      args = ["${var.step_args}"]
+    }
+
+    name = "${var.step["name"]}"
+  }
+
   instance_group = "${var.instance_groups}"
 
   bootstrap_action {

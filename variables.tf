@@ -26,7 +26,15 @@ variable "key_name" {}
 variable "subnet_id" {}
 
 variable "service_access_security_group_id" {
-  description = "Security group with access to AWS Services over internet gateway. Applied to cluster service, master and slaves"
+  description = "Security group with access to AWS Services over internet gateway. Applied to cluster service"
+}
+
+variable "additional_master_security_group_id" {
+  description = "Additional security group for master node"
+}
+
+variable "additional_slave_security_group_id" {
+  description = "Additional security group for slave nodes"
 }
 
 variable "keep_job_flow_alive_when_no_steps" {

@@ -51,7 +51,7 @@ resource "aws_iam_role_policy_attachment" "emr_ec2_instance_profile" {
 }
 
 resource "aws_iam_role_policy_attachment" "emr_ec2_instance_profile_custom_policies" {
-  count      = "${var.custum_policy_count}"
+  count      = "${var.custom_policy_count}"
   policy_arn = "${element(var.custom_policy_arns, count.index)}"
   role       = "${aws_iam_role.emr_ec2_instance_profile.name}"
 }

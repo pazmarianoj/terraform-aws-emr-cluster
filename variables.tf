@@ -33,7 +33,7 @@ variable "keep_job_flow_alive_when_no_steps" {
   default = true
 }
 
-variable "custum_policy_count" {
+variable "custom_policy_count" {
   default = 0
   description = "Number of custom policy arns in custom_policy_arns"
 }

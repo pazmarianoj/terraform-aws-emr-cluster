@@ -123,24 +123,9 @@ resource "aws_emr_cluster" "cluster" {
     name = "Setup Hadoop Debugging"
   }
 
-  step {
-    action_on_failure = "${var.step["action_on_failure"]}"
-
-    "hadoop_jar_step" {
-      jar  = "${var.step["jar"]}"
-      args = ["${var.step_args}"]
-    }
-
-    name = "${var.step["name"]}"
-  }
-
   instance_group = "${var.instance_groups}"
 
-  bootstrap_action {
-    path = "${var.bootstrap_uri}"
-    name = "${var.bootstrap_name}"
-    args = "${var.bootstrap_args}"
-  }
+  bootstrap_action = "${var.bootstrap_actions_list}"
 
   log_uri      = "${var.log_uri}"
   service_role = "${aws_iam_role.emr_service_role.arn}"
